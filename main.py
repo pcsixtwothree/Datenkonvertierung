@@ -46,8 +46,10 @@ def main(debug=False):
             text_list[ind] = fin_item + "\n" # schreibt die neu Fomatierte Zeile wieder in die Hauptliste und fügt Zeilenumbruch hinzu
 
         if "Messwert_CG" in text_list[ind]: # Wenn Messwert_CG in einer Zeile vorhanden ist prüft ob ein Ergebniss Ovr beträgt und ändert es gegenfalls zu 0
-            if "Ovr" in text_list[ind]:
-                text_list[ind] = text_list[ind].replace("Ovr", "0")
+            messwert_split = text_list[ind].split()
+            if messwert_split[2] == "0,00":
+                messwert_split[4] = "0,00"
+                text_list[ind] = " ".join(messwert_split) + "\n"
             
 
         if debug:
